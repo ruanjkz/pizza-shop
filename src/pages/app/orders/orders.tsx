@@ -1,12 +1,11 @@
-import { ArrowRight, Search, X } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 
-import { Button } from '@/components/ui/button'
+import { OrderTableFilters } from '@/components/order-table-filters'
+import { OrderTableRow } from '@/components/order-table-row'
 import { Input } from '@/components/ui/input'
 import {
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
@@ -21,10 +20,7 @@ export function Orders() {
       </div>
 
       <div className="space-y-2.5">
-        <form action="" className="flex items-center gap-2">
-          <span className="text-sm font-semibold">Filtros:</span>
-          <Input placeholder="Nome do cliente" className="h-8 w-[20rem]" />
-        </form>
+        <OrderTableFilters />
 
         <div className="border rounded-md">
           <Table>
@@ -42,40 +38,7 @@ export function Orders() {
             </TableHeader>
             <TableBody>
               {Array.from({ length: 10 }).map((_, index) => (
-                <TableRow key={index}>
-                  <TableCell>
-                    <Button variant="outline" size="xs">
-                      <Search className="h-3 w-3" />
-                      <span className="sr-only">Detalhes do pedido</span>
-                    </Button>
-                  </TableCell>
-                  <TableCell className="font-mono">DSGNSU32094898</TableCell>
-                  <TableCell className="text-muted-foreground">
-                    15 minutos
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full bg-slate-400"></span>
-                      <span className="font-medium text-muted-foreground">
-                        Pendente
-                      </span>
-                    </div>
-                  </TableCell>
-                  <TableCell className="font-medium">Ruan Pablo</TableCell>
-                  <TableCell className="font-medium">R$ 149,99</TableCell>
-                  <TableCell>
-                    <Button variant="outline" size="xs">
-                      <ArrowRight className="h-3 w-3 mr-2" />
-                      Aprovar
-                    </Button>
-                  </TableCell>
-                  <TableCell>
-                    <Button variant="ghost" size="xs">
-                      <X className="h-3 w-3 mr-2" />
-                      Cancelar
-                    </Button>
-                  </TableCell>
-                </TableRow>
+                <OrderTableRow key={index} />
               ))}
             </TableBody>
           </Table>
